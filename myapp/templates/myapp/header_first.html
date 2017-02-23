@@ -1,0 +1,329 @@
+{%load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}" / >
+  <link rel="stylesheet" href="{% static 'myapp/css/style2.css' %}" / >
+  <link rel="stylesheet" href="{% static 'myapp/css/map.css' %}" / >
+  <link rel="stylesheet" href="{% static 'myapp/css/graph.css' %}" />
+  <script type="text/javascript" src="{% static 'myapp/js/jquery-1.7.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'myapp/js/scripts.js' %}"></script>
+  <script type="text/javascript" src="{% static 'myapp/js/map.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeE9zkeT1v-qGN-aFNvZj5amyXN5G0svo&libraries=places&callback=initAutocomplete"
+         async defer></script>
+  <script type="text/javascript" src="{% static 'myapp/js/graph.js' %}"></script>
+  
+  
+    
+<!--<script src="https://maps.googleapis.com/maps/api/js"></script>
+-->  
+
+ 
+ <!--<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+  <!--<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO88gOTH-HyE9Sn9NWRq4RfwJmA9vE1rw&callback=myMap">
+  </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeE9zkeT1v-qGN-aFNvZj5amyXN5G0svo&libraries=places&callback=myMap"
+         async defer></script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+
+<script type="text/javascript">
+
+</script>
+
+
+  <title>
+    Air and Water Quality monitoring system
+  </title>
+</head>
+
+<body>
+<!--<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO88gOTH-HyE9Sn9NWRq4RfwJmA9vE1rw&callback=initialize">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" /> -->
+
+
+
+
+<div id="wrapper">
+  <!-- Sidebar -->
+
+  <div class="area_search">
+      <center>
+      <div>AIR AND WATER QUALITY MONITORING SYSTEM</div>
+      </center>
+  </div>
+  <div id="sidebar-wrapper">
+
+  
+   
+  <hr>
+   <ul class="nav nav-pills nav-stacked">
+          <li role="presentation"><a class="sensors" href="#sensors" aria-controls="" role="tab" data-toggle="tab" style="color: #fff"><b>Sensors</b></a></li>
+	        <li role="presentation"><a class="currentData" href="http://its.freeoda.com/" aria-controls="" role="tab" data-toggle="tab" style="color: #fff"><b>Current Data</b></a></li>
+ 	        <li role="presentation"><a class="previousData" href="#previousData" aria-controls="" role="tab" data-toggle="tab" style="color: #fff"><b>Previous Data</b></a></li>
+          
+          <!--<li role="presentation"><a class="analytics" href="#analytics" aria-controls="" role="tab" data-toggle="tab" style="color: #fff"><b>Analytics</b></a></li>-->
+    
+    </ul>
+  </div>
+
+
+
+
+  <!-- /#sidebar-wrapper 
+
+  <!-- /#page-content-wrapper 
+</div>
+<!-- /#wrapper -->
+
+<!--******** HOME STARTS ****************************************************-->
+<div class="sensors-view row home-view" >
+
+
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box" >
+    <div id="map" style="position: relative; overflow: hidden;"></div>
+   
+<!-- Replace the value of the key parameter with your own API key. -->
+
+</div>
+<!--********* HOME ENDS *****************************************************-->
+<div class="previousData-view">
+
+    <center>
+  <div class="buttons">
+    <input type="button" value="1 year" class="1y"/>
+    <input type="button" value="6 months" class="6m"/>
+    <input type="button" value="3 months" class="3m"/>
+    <input type="button" value="1 month" class="1m"/>
+
+  </div>
+
+  <div class="graph">
+
+    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="graph" aria-labelledby="title" role="img">
+
+      <title id="title">A line chart showing some information</title>
+
+      <g class="grid x-grid" id="xGrid"> <line x1="0" x2="0" y1="5" y2="371"></line></g>
+
+      <g class="grid y-grid" id="yGrid"> <line x1="0" x2="705" y1="370" y2="370"></line></g> 
+<!-- *  ****************- 1year graph***************************************** 
+      <div class="1y_graph">-->
+           <g class="labels x-labels 1y_graph"> 
+                <text x="10" y="400">Sep</text>  
+                <text x="156" y="400">Oct</text>  
+                <text x="302" y="400">Nov</text>  
+                <text x="448" y="400">Dec</text>  
+                <text x="594" y="400">Jan</text>  
+                 
+                <text x="310" y="440" class="label-title">YearS</text>
+            </g>
+
+          <g class="labels y-labels 1y_graph">  
+              <text x="-5" y="15">15</text>  
+              <text x="-5" y="131">10</text>  
+              <text x="-5" y="248">5</text>  
+              <text x="-5" y="373">0</text>  
+              <text x="-15" y="200" class="label-title">Reading</text>
+          </g>
+
+             <polyline class="1y_graph"
+               fill="none"
+               stroke="#0074d9"
+               stroke-width="2"
+               points="
+                 00,220
+                 20,60
+                 40,80
+                 60,20
+                 80,80
+                 100,80
+                 120,60
+                 140,220
+                 160,90
+                 180,80
+                 200, 110
+                 220, 10
+                 240, 70
+                 260, 100
+                 280, 200
+                 300, 40
+                 320, 0
+                 340, 100
+                 360, 170
+                 380, 120
+                 400, 60
+                 420, 170
+                 440, 80
+                 480, 220
+                 520, 90
+                 560, 250
+               "
+             />     
+<!-- *  ****************- 6months graph***************************************** -->
+        <g class="labels x-labels 6m_graph"> 
+                  <text x="10" y="400">September</text>  
+                  <text x="156" y="400">October</text>  
+                  <text x="302" y="400">November</text>  
+                  <text x="448" y="400">December</text>  
+                  <text x="594" y="400">January</text> 
+                  <text x="720" y="400">February</text>  
+                  <text x="310" y="440" class="label-title">MONTHS</text>
+        </g>
+
+        <g class="labels y-labels 6m_graph">  
+                <text x="-5" y="15">15</text>  
+                <text x="-5" y="131">10</text>  
+                <text x="-5" y="248">5</text>  
+                <text x="-5" y="373">0</text>  
+                <text x="-15" y="200" class="label-title">Reading</text>
+         </g>
+               <polyline class="6m_graph"
+                 fill="none"
+                 stroke="#0074d9"
+                 stroke-width="2"
+                 points="
+                   00,220
+                   20,60
+                   40,80
+                   60,20
+                   80,80
+                   100,80
+                   120,60
+                   140,220
+                   160,90
+                   180,80
+                   200, 110
+                   220, 10
+                   240, 70
+                   260, 100
+                   280, 200
+                   300, 40
+                   320, 0
+                   340, 100
+                   360, 270
+                   380, 120
+                   400, 60
+                   420, 270
+                   440, 80
+                   480, 220
+                   500, 90
+                   540, 250
+                   580, 100
+                   620, 90
+                   660, 120
+                 "
+               />
+<!-- *  ****************3 months graph***************************************** -->   
+
+        <g class="labels x-labels 3m_graph"> 
+            <text x="10" y="400">November</text>    
+            <text x="302" y="400">December</text> 
+            <text x="594" y="400">February</text>
+            <text x="310" y="440" class="label-title">Months</text>
+         </g>
+
+         <g class="labels y-labels 3m_graph">  
+          <text x="-5" y="15">15</text>  
+          <text x="-5" y="131">10</text>  
+          <text x="-5" y="248">5</text>  
+          <text x="-5" y="373">0</text>  
+          <text x="-15" y="200" class="label-title">Reading</text>
+         </g>
+         <polyline class="3m_graph"
+           fill="none"
+           stroke="#0074d9"
+           stroke-width="2"
+           points="
+             00,220
+             40,80
+             60,20
+             100,80
+             120,60
+             160, 180
+             200, 110
+             240, 70
+             260, 100
+             280, 120
+             300, 40
+             320, 0
+             340, 100
+             360, 270
+             380, 120
+             400, 60
+             440, 270
+             480, 80
+             520, 200
+             540, 220
+             560, 210
+            "
+         />             
+        <g class="labels x-labels 1m_graph"> 
+              <text x="10" y="400">FEB 5</text>  
+              <text x="156" y="400">FEB 10</text>  
+              <text x="302" y="400">FEB 15</text>  
+              <text x="448" y="400">FEB 20</text>  
+              <text x="594" y="400">FEB 29</text>  
+              <text x="310" y="440" class="label-title">DAYS</text>
+        </g>
+
+        <g class="labels y-labels 1m_graph">  
+            <text x="-5" y="15">15</text>  
+            <text x="-5" y="131">10</text>  
+            <text x="-5" y="248">5</text>  
+            <text x="-5" y="373">0</text>  
+            <text x="-15" y="200" class="label-title">Reading</text>
+        </g>
+           <polyline class="1m_graph"
+             fill="none"
+             stroke="#0074d9"
+             stroke-width="2"
+             points="
+               00,220
+               20,60
+               40,80
+               60,20
+               80,120
+               100,80
+               120,60
+               140,120
+               160,90
+               180,80
+               200, 110
+               220, 10
+               240, 70
+               260, 100
+               280, 200
+               300, 40
+               320, 0
+               340, 100
+               360, 120
+               380, 140
+               400, 60
+               420, 170
+               440, 80
+               480, 180
+               520, 100
+               540, 120
+               560, 210
+             "
+           />
+    
+    </svg>
+  </div>
+  </center>
+
+</div>
+<!-- *  ****************3 months graph ends***************************************** -->   
+
+
+
+</div>
+</body>
+
+</html>
