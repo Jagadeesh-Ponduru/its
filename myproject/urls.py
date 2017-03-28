@@ -36,6 +36,6 @@ urlpatterns =[
    #url(r'^sarvani/',myapp.views.current_datetime),
    url(r'^time/plus/(\d{1,2})/$', myapp.views.hours_ahead),
    #url to store the sensor data to database
-   url(r'^(?P<data>[0-9]+)/$',views.index,name = 'index'),
+   url(r'^(?P<name>\w+)/(?P<value>[0-9]+)/$',views.index,name = 'index'),
   
 ]
