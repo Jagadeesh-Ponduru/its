@@ -51,11 +51,3 @@ class IOT(TemplateView):
 		#context = {'name':["Sarvani", "pranavi"]}
 		#return context
 		
-def index(request,name,value):
-	
-	temp_sen_data=Sensor()
-	temp_sen_data.name = name
-	temp_sen_data.value= value
-	temp_sen_data.save()
-	
-return HttpResponse("<h3>"+name+" @</br>lat: "+value+"</h3>")
